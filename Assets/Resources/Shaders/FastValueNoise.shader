@@ -49,7 +49,7 @@
         fractional = 1. - fractional * fractional;
 
         float2 uv = (integer.xy + float2(37., 17.) * integer.z) + fractional.xy;
-        float2 rg = tex2D(_LookupTexture, (uv + .5) * .00390625).xy;
+        float2 rg = tex2Dlod(_LookupTexture, float4((uv + .5) * .00390625, 0., 0.)).xy;
 
         return lerp(rg.x, rg.y, fractional.z);
     }
@@ -64,7 +64,7 @@
 
         float2 uv = (integer.xy + integer.z * float2(37., 17.) + integer.w * float2(59., 83.)) + fractional.xy;
 
-        float4 rgba = tex2D(_LookupTexture, (uv + .5) * .00390625);
+        float4 rgba = tex2Dlod(_LookupTexture, float4((uv + .5) * .00390625, 0., 0.));
         return lerp(lerp(rgba.x, rgba.y, fractional.z), lerp(rgba.z, rgba.w, fractional.z), fractional.w);
     }
 

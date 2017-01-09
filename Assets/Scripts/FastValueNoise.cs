@@ -33,7 +33,7 @@ public class FastValueNoise : MonoBehaviour
         }
     }
 
-    private Texture2D m_LookupTexture;
+    public Texture2D m_LookupTexture;
     private Texture2D lookupTexture
     {
         get
